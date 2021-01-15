@@ -1,0 +1,37 @@
+
+{% extends 'index.html' %}
+      {% block content %}
+<section class="banner-area relative" id="home">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+          <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-lg-5  col-md-6 header-right">
+              <h1 class="text-white">Register</h1>
+              <form method="POST" action="/newuser/" >
+  <div class="container">
+  {% csrf_token %}
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+
+  
+    <input class="form-control txt-field" type="text" placeholder="Enter Email" name="email" required></br>
+    <input class="form-control txt-field" type="text" placeholder="Enter Name " name="nam" required></br>
+    <input class="form-control txt-field" type="password" placeholder="Enter Password " name="psw" required></br>
+    <input class="form-control txt-field" type="password" placeholder="Repeat Password" name="psw-repeat" required></br>
+    <hr>
+    <p>By creating an account you agree to our</p>
+
+    <button class="btn btn-default btn-lg btn-block text-center text-uppercase" type="submit" name="reg">Register</button>
+  </div>
+  
+  <div class="container signin">
+    <p>Already have an account? <a href="/">Sign in</a>.</p>
+  </div>
+</form>
+            </div>                      
+          </div>
+        </div>
+      </section>
+</body>
+
+{% endblock %}

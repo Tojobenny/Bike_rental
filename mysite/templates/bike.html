@@ -1,0 +1,195 @@
+    {% extends 'index.html' %}
+	{% block content %}
+
+			<!-- start banner Area -->
+			<section class="banner-area relative" id="home">	
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Bike			
+							</h1>	
+							<p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="/bike/"> bike</a></p>
+						</div>											
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->	
+
+			<!-- Start model Area -->
+			<section class="model-area section-gap" id="cars">
+				<div class="container">
+					<div class="row d-flex justify-content-center pb-40">
+						<div class="col-md-8 pb-40 header-text">
+							<h1 class="text-center pb-10">Choose your Desired Bike Model</h1>
+							<p class="text-center">
+								Who are in extremely love with eco friendly system.
+							</p>
+						</div>
+					</div>				
+					<div class="active-model-carusel">
+						{% for i in dl %}
+							
+									<div class="row align-items-center single-model item">
+										<div class="col-lg-6 model-left">
+											<div class="title justify-content-between d-flex">
+												<h4 class="mt-20">{{i.4}}</h4>
+												<h2>Rs.{{i.3}}<span>/day</span></h2>
+											</div>
+											<p>
+												{{i.5}}
+											</p>
+											<p>
+												Capacity         : 02 Person <br>
+												Transmission     : Manual
+											</p>
+											<!-- {{loggeduser}}
+											<form action="/bike/" name='bike' method="post">{% csrf_token %}
+											<input type='text' name='Name'/>
+											<input type='text' name='Id'/>
+											<input type='text' name='rate'/><input type='submit' value='submit'/>
+											</form> -->
+
+											<a class="text-uppercase primary-btn" href="/booking/{{i.1}}/" {% ifequal  loggeduser None %} data-toggle="modal" data-target="#myModal" {% endifequal %}>Book This Bike Now</a>
+										</div>
+										<div class="col-lg-6 model-right">
+											<img class="img-fluid" src="/{{i.7}}" alt="">
+										</div>
+									</div>
+						{% endfor %}
+																		
+					</div>
+				</div>	
+			</section>
+			<!-- End model Area -->			
+
+			<!-- Start callaction Area -->
+			<section class="callaction-area relative section-gap">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-10">
+							<h1 class="text-white">Experience Great Support</h1>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+							</p>
+							<a class="callaction-btn text-uppercase" href="#">Reach Our Support Team</a>	
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End callaction Area -->
+
+			<!-- Start feature Area -->
+			<section class="feature-area section-gap" id="service">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="col-md-8 pb-40 header-text">
+							<h1>What Services we offer to our clients</h1>
+							<p>
+								Who are in extremely love with eco friendly system.
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-4 col-md-6">
+							<div class="single-feature">
+								<h4><span class="lnr lnr-user"></span>Expert Technicians</h4>
+								<p>
+									Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6">
+							<div class="single-feature">
+								<h4><span class="lnr lnr-license"></span>Professional Service</h4>
+								<p>
+									Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+								</p>								
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6">
+							<div class="single-feature">
+								<h4><span class="lnr lnr-phone"></span>Great Support</h4>
+								<p>
+									Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+								</p>								
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6">
+							<div class="single-feature">
+								<h4><span class="lnr lnr-rocket"></span>Technical Skills</h4>
+								<p>
+									Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+								</p>				
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6">
+							<div class="single-feature">
+								<h4><span class="lnr lnr-diamond"></span>Highly Recomended</h4>
+								<p>
+									Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+								</p>								
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6">
+							<div class="single-feature">
+								<h4><span class="lnr lnr-bubble"></span>Positive Reviews</h4>
+								<p>
+									Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+								</p>									
+							</div>
+						</div>						
+					</div>
+				</div>	
+			</section>
+			<!-- End feature Area -->				
+	 <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog  modal-lg"><!--  modal-sm -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <center>
+
+						<div class="col-lg-6  col-md-7 header-right" >
+							<h4 class="text-white pb-40">Loggin to rend a bike!</h4>
+							<form class="form" role="form" autocomplete="off" method='POST' action="/loggin/">
+								{% csrf_token %}
+
+							    <div class="from-group">
+							    	
+									<select class="form-control txt-field" name="b1">
+										<option selected>user</option>
+										<option >admin</option>
+									</select>
+								
+							    	<input class="form-control txt-field" type="text" name="name" placeholder="user id">
+							    	<input class="form-control txt-field" type="password" name="password" placeholder="password">
+							  
+							    </div>
+							    <div class="form-group row">
+							    	{{msg}}
+							        <div class="col-md-12">
+							            <button name="log" type="submit" class="btn btn-default btn-lg btn-block text-center text-uppercase" >Loggin</button>
+							           <center> <a href="/newuser/" style="color: white;font-family: Times New Roman;" >new user</a>
+							           </center>
+
+							        </div>
+							    </div>
+							</form>
+						</div>
+					</center>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+			<!-- start footer Area -->		
+	{% endblock %}

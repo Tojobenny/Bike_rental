@@ -1,0 +1,68 @@
+{% extends 'index.html' %}
+{% block content %}
+			
+
+			<section class="banner-area relative" id="home">
+				<div class="overlay overlay-bg"></div>	
+				<div class="container">
+					<div class="row fullscreen d-flex align-items-center justify-content-center">
+					
+						<div class="col-lg-5  col-md-6 header-right">
+							<h4 class="text-white pb-30">Book Your Bike Today!</h4>
+							<form class="form" role="form" autocomplete="off" method='POST' action="/booking/{{regn}}/" >
+								{% csrf_token %}
+								
+							    <div class="form-group">
+
+								<input class="form-control txt-field" type="text" name="bike" value="{{regn}}">									
+							    </div>
+							   
+							    <div class="form-group row">
+							        <div class="col-md-6 wrap-left">
+								       	<div class="default-select" id="default-select">
+								       		<input class="form-control txt-field" type="text" placeholder="Pick up" readonly required>
+
+										</div>
+							        </div>
+							        <div class="col-md-6 wrap-right">
+										<div class="input-group dates-wrap">                                          
+											<input type='text' id='datepicker' name="pdate"  placeholder="Date & time" class="dates form-control" required>
+											<div class="input-group-prepend">
+												<span  class="input-group-text"><span class="lnr lnr-calendar-full"></span></span>
+											</div>            										
+										</div>
+							        </div>
+							    </div>
+							    <div class="form-group row">
+							        <div class="col-md-6 wrap-left">
+								       	<div class="default-select" id="default-select">
+											<input class="form-control txt-field" type="text" placeholder="Drop Out" readonly>
+										</div>
+							        </div>
+							        <div class="col-md-6 wrap-right">
+										<div class="input-group dates-wrap">                                              
+											<input id="datepicker2" name="ddate" class="dates form-control" placeholder="Date & time" type="text" required>                        
+											<div class="input-group-prepend">
+												<span  class="input-group-text"><span class="lnr lnr-calendar-full"></span></span>
+											</div>											
+										</div>
+							        </div>
+							    </div>							    
+							    <div class="from-group">
+							    	<input class="form-control txt-field" type="text" name="name" placeholder="Your name" value={{loggeduser.name}} required>
+							    	<input class="form-control txt-field" type="email" name="email" placeholder="Email address" value={{loggeduser.user}} required>
+							    	<input class="form-control txt-field" type="tel" name="phone" placeholder="Phone number" required>
+							    	 <input type="hidden" name="uid" value={{loggeduser.id}} > 
+							    </div>
+							    <div class="form-group row">
+							    	{{msg}}
+							        <div class="col-md-12">
+							            <button type="submit" class="btn btn-default btn-lg btn-block text-center text-uppercase" name="reg">Confirm Bike Booking</button>
+							        </div>
+							    </div>
+							</form>
+						</div>											
+					</div>
+				</div>					
+			</section>
+{% endblock %}
